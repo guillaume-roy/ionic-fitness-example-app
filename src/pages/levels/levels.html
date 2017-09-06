@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Niveaux</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let level of levels | async" (click)="viewLevel(level)">
+      {{ level.title }}
+    </button>
+  </ion-list>
+</ion-content>

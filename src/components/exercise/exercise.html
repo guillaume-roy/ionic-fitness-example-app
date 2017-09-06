@@ -1,0 +1,55 @@
+<ion-grid>
+  <ion-row align-items-center>
+    <ion-col text-center>
+      <ion-badge color="primary">
+        {{ exercise.title }}
+      </ion-badge>
+    </ion-col>
+    <ion-col>
+      <small class="text-info">
+        <ion-icon name="repeat"></ion-icon>
+        {{ exercise.series }} {{ exercise.series > 1 ? 'Séries' : 'Série' }}
+      </small>
+    </ion-col>
+    <ion-col>
+      <small class="text-info" *ngIf="exercise.isAmrap">
+        <ion-icon name="star"></ion-icon>
+        {{ exercise.isAmrap ? 'Réps MAX' : '' }}
+      </small>
+    </ion-col>
+  </ion-row>
+
+  <ion-row align-items-center>
+    <ion-col>
+      <ion-note *ngIf="exercise.seriesRest > 0">
+        <ion-icon name="stopwatch"></ion-icon>
+        {{ exercise.seriesRest | restTime }}
+      </ion-note>
+    </ion-col>
+    <ion-col>
+      <small *ngIf="exercise.rythm > 0" class="rythm-{{exercise.rythm}}">
+        <ion-icon name="pulse"></ion-icon>
+        {{ exercise.rythm === 1 ? 'Lent' : '' }}
+        {{ exercise.rythm === 2 ? 'Rapide' : '' }}
+        {{ exercise.rythm === 3 ? 'Max' : '' }}
+      </small>
+    </ion-col>
+    <ion-col>
+      <small class="text-warning" *ngIf="exercise.isLeftRight">
+        <ion-icon name="arrow-round-back"></ion-icon>
+        Gauche/Droite
+        <ion-icon name="arrow-round-forward"></ion-icon>
+      </small>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="final-rest-row" *ngIf="exercise.finalRest > 0">
+    <ion-col text-center>
+      <ion-note>
+        <ion-icon name="stopwatch"></ion-icon>
+        {{ exercise.finalRest | restTime }}
+      </ion-note>
+    </ion-col>
+  </ion-row>
+
+</ion-grid>

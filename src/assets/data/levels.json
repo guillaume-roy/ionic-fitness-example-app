@@ -1,0 +1,95 @@
+[
+  {
+    "title": "Workout 1",
+    "code": "WORKOUT_1",
+    "exercises": [
+      [
+        {
+          "title": "Exercise 1",
+          "code": "EXERCISE_1",
+          "isAmrap": true,
+          "finalRest": 180,
+          "seriesRest": 120,
+          "series": 3,
+          "isSelected": true,
+          "result": []
+        },
+        {
+          "title": "Exercise 1 - Variation B",
+          "code": "EXERCISE_1_B",
+          "isAmrap": true,
+          "finalRest": 60,
+          "seriesRest": 30,
+          "series": 5,
+          "result": []
+        }
+      ],
+      [
+        {
+          "title": "Exercise 2",
+          "code": "EXERCISE_2",
+          "isAmrap": true,
+          "finalRest": 180,
+          "seriesRest": 120,
+          "series": 3,
+          "isSelected": true,
+          "result": []
+        }
+      ],
+      [
+        {
+          "title": "Exercise 3",
+          "code": "EXERCISE_3",
+          "isAmrap": true,
+          "finalRest": 180,
+          "seriesRest": 120,
+          "series": 3,
+          "isSelected": true,
+          "result": []
+        }
+      ]
+    ]
+  },
+  {
+    "title": "Workout 2",
+    "code": "WORKOUT_2",
+    "exercises": [
+      [
+        {
+          "title": "Exercise 5",
+          "code": "EXERCISE_5",
+          "isAmrap": true,
+          "finalRest": 180,
+          "seriesRest": 120,
+          "series": 3,
+          "isSelected": true,
+          "result": []
+        }
+      ],
+      [
+        {
+          "title": "Exercise 6",
+          "code": "EXERCISE_6",
+          "isAmrap": true,
+          "finalRest": 180,
+          "seriesRest": 120,
+          "series": 3,
+          "isSelected": true,
+          "result": []
+        }
+      ],
+      [
+        {
+          "title": "Exercise 1",
+          "code": "EXERCISE_1",
+          "isAmrap": true,
+          "finalRest": 180,
+          "seriesRest": 120,
+          "series": 3,
+          "isSelected": true,
+          "result": []
+        }
+      ]
+    ]
+  },
+]

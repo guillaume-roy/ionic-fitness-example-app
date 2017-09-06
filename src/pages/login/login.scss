@@ -1,0 +1,24 @@
+page-login {
+  ion-content {
+    background-color: color($colors, primary) !important;
+
+    svg {
+      height: 20rem;
+      fill: color($colors, secondary);
+    }
+
+    h1 {
+      color: color($colors, secondary);
+      text-transform: uppercase;
+    }
+
+    ion-item {
+      background-color: transparent !important;
+      color: white !important;
+
+      ::-webkit-input-placeholder {
+        color: white !important;
+      }
+    }
+  }
+}

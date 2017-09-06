@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{ (session | async).current.title }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showMoreActions()">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid *ngIf="!(session | async).isRest && !(session | async).isFinished">
+    <ion-row>
+      <ion-col text-center>
+        <h1>{{ (session | async).exercise.title }}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin: 3rem 0">
+      <ion-col text-center>
+        <span class="text-info">
+          <ion-icon name="repeat"></ion-icon>
+          Série : {{ (session | async).serieIndex + 1 }} / {{ (session | async).exercise.series }}
+        </span>
+      </ion-col>
+      <ion-col text-center>
+        <span class="rythm-{{(session | async).exercise.rythm}}" *ngIf="(session | async).exercise.rythm > 0">
+          <ion-icon name="pulse"></ion-icon>
+          {{ (session | async).exercise.rythm === 1 ? 'Lent' : '' }}
+          {{ (session | async).exercise.rythm === 2 ? 'Rapide' : '' }}
+          {{ (session | async).exercise.rythm === 3 ? 'Max' : '' }}
+        </span>
+      </ion-col>
+      <ion-col text-center>
+        <span class="text-warning" *ngIf="(session | async).exercise.isLeftRight">
+          <ion-icon name="arrow-round-back" *ngIf="!(session | async).isFirstSide"></ion-icon>
+          <span *ngIf="!(session | async).isFirstSide">Côté gauche</span>
+        <span *ngIf="(session | async).isFirstSide">Côté droit</span>
+        <ion-icon name="arrow-round-forward" *ngIf="(session | async).isFirstSide"></ion-icon>
+        </span>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center justify-content-center>
+      <ion-col>
+        <button ion-button round large full color="secondary" (click)="updateResult('INCREMENT')">
+          <ion-icon name="arrow-up"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center justify-content-center>
+      <ion-col text-center>
+        <h1>{{ (session | async).serieResult }}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center justify-content-center>
+      <ion-col text-center>
+        <button ion-button round large full color="secondary" (click)="updateResult('DECREMENT')" [disabled]="(session | async).serieResult === 0">
+          <ion-icon name="arrow-down"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="(session | async).isRest">
+    <ion-row>
+      <ion-col text-center>
+        <h1>Pause : {{(session | async).restTime | restTime}}</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="(session | async).isFinished">
+    <ion-row>
+      <ion-col text-center>
+        <h1>Séance terminée !</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer color="primary" *ngIf="!(session | async).isRest">
+  <ion-toolbar color="primary">
+    <button ion-button icon-left full clear large color="light" (click)="validateSerie()" *ngIf="!(session | async).isFinished">
+      <ion-icon name="checkmark"></ion-icon>
+      Valider
+    </button>
+    <button ion-button icon-left full clear large color="light" (click)="saveSession()" *ngIf="(session | async).isFinished">
+      <ion-icon name="checkmark"></ion-icon>
+      Valider
+    </button>
+  </ion-toolbar>
+</ion-footer>

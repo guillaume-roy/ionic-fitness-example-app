@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Historique</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list *ngIf="sessions | async">
+    <ion-item *ngFor="let session of (sessions | async)">
+      <h2>{{ session.title }}</h2>
+      <h3>{{ session.startDate | amDateFormat:'DD/MM/YYYY HH:mm' }}</h3>
+      <ul *ngFor="let exercise of session.exercises">
+        <li>{{ exercise.title }} :
+          <span *ngIf="!exercise.isLeftRight">{{ (exercise.result || []).join(" - ") }}</span>
+          <span *ngIf="exercise.isLeftRight">
+            <span *ngFor="let e of exercise.leftRightResult; let i = index">
+              <span>G: {{ e.left }} / D: {{ e.right }}</span>
+              <span *ngIf="i + 1 < exercise.leftRightResult.length"> - </span>
+            </span>
+          </span>
+        </li>
+      </ul>
+    </ion-item>
+  </ion-list>
+</ion-content>
